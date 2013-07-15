@@ -4,8 +4,10 @@ import mods.nurseangel.japanesecoloredwool.proxy.CommonProxy;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -37,7 +39,7 @@ public class JapaneseColoredWool {
 	 *
 	 * @param event
 	 */
-	@Mod.PreInit
+	@Mod.EventHandler
 	public void modPreInit(FMLPreInitializationEvent event) {
 		config = new Config(event);
 	}
@@ -47,7 +49,7 @@ public class JapaneseColoredWool {
 	 *
 	 * @param event
 	 */
-	@Mod.Init
+	@Mod.EventHandler
 	public void modInit(FMLInitializationEvent event) {
 		/**
 		 * レシピは以下のようにする
@@ -89,5 +91,7 @@ public class JapaneseColoredWool {
 			}
 		}
 	}
+
+
 
 }

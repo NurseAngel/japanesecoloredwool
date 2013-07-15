@@ -1,5 +1,6 @@
 package mods.nurseangel.japanesecoloredwool;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -8,6 +9,8 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
+import net.minecraftforge.common.IShearable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -52,7 +55,7 @@ public class JCedWoolBlock extends Block {
 		int loop = 0;
 		for (int i = 0; i <= colorListLength; i++) {
 			// 素材名からアイコンファイル名を作成
-			String texturePath = Reference.TEXTURE_PATH + "texture-" + textureIndex + "-" + i;
+			String texturePath = Reference.TEXTURE_PATH + textureIndex + "-" + i;
 			icon[i] = iconRegister.registerIcon(texturePath);
 		}
 	}
@@ -78,4 +81,5 @@ public class JCedWoolBlock extends Block {
 			par3List.add(new ItemStack(par1, 1, var4));
 		}
 	}
+
 }

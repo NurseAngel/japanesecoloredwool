@@ -1,16 +1,18 @@
-package mods.nurseangel.japanesecoloredwool;
+package com.github.nurseangel.japanesecoloredwool;
 
-import net.minecraft.item.ItemBlock;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlockWithMetadata;
 import net.minecraft.item.ItemStack;
 
-public class JCWoolItem extends ItemBlock {
+public class JCWoolItemBlock extends ItemBlockWithMetadata {
 	/**
 	 * コンストラクタ
 	 *
-	 * @param アイテムID
+	 * @param Blockをそのまま渡す
 	 */
-	public JCWoolItem(int i) {
-		super(i);
+	public JCWoolItemBlock(Block block) {
+		// 何故か引数が二つ
+		super(block, block);
 	}
 
 	/**

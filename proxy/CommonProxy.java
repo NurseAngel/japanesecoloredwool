@@ -1,4 +1,4 @@
-package mods.nurseangel.japanesecoloredwool.proxy;
+package com.github.nurseangel.japanesecoloredwool.proxy;
 
 public class CommonProxy
 {

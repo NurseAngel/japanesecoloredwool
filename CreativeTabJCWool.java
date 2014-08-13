@@ -1,7 +1,8 @@
-package mods.nurseangel.japanesecoloredwool;
+package com.github.nurseangel.japanesecoloredwool;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -11,13 +12,6 @@ public class CreativeTabJCWool extends CreativeTabs {
 		super(label);
 	}
 
-	/**
-	 * 使用するアイコンのBlockID
-	 * @return int
-	 */
-	public int getTabIconItemIndex() {
-		return Config.BlockIdStart + 1;
-	}
 
 	/**
 	 *クリエイティブタブのラベル
@@ -26,5 +20,16 @@ public class CreativeTabJCWool extends CreativeTabs {
 	@SideOnly(Side.CLIENT)
 	public String getTranslatedTabLabel() {
 		return Reference.MOD_NAME;
+	}
+
+	/**
+	 * 使用するアイコンのItem
+	 * @return Item
+	 */
+	@Override
+    @SideOnly(Side.CLIENT)
+	public Item getTabIconItem() {
+        return Item.getItemFromBlock(Blocks.wool);
+        //TODO JCedWoolBlockのどれかにする
 	}
 }

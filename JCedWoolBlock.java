@@ -1,16 +1,14 @@
-package mods.nurseangel.japanesecoloredwool;
+package com.github.nurseangel.japanesecoloredwool;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
-import net.minecraft.world.World;
-import net.minecraftforge.common.IShearable;
+import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -21,11 +19,11 @@ public class JCedWoolBlock extends Block {
 	/** テクスチャファイル名1文字目 */
 	private int textureIndex;
 	/** アイコン */
-	Icon[] icon = new Icon[17];
+	IIcon[] icon = new IIcon[17];
 
-	public JCedWoolBlock(int i, Material material, int textureIndex, int colorListLength) {
-		super(i, material);
-		setStepSound(Block.soundClothFootstep);
+	public JCedWoolBlock(Material material, int textureIndex, int colorListLength) {
+		super(material);
+		setStepSound(Block.soundTypeCloth);
 		setHardness(0.8F);
 
 		this.textureIndex = textureIndex;
@@ -40,7 +38,7 @@ public class JCedWoolBlock extends Block {
 	 * @param 取得する方角
 	 * @param メタデータ
 	 */
-	public Icon getIcon(int par1, int par2) {
+	public IIcon getIcon(int par1, int par2) {
 		return icon[par2];
 	}
 
@@ -51,9 +49,9 @@ public class JCedWoolBlock extends Block {
 	 */
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister) {
+	public void registerBlockIcons(IIconRegister iconRegister) {
 		int loop = 0;
-		for (int i = 0; i <= colorListLength; i++) {
+		for (int i = 0; i < colorListLength; i++) {
 			// 素材名からアイコンファイル名を作成
 			String texturePath = Reference.TEXTURE_PATH + textureIndex + "-" + i;
 			icon[i] = iconRegister.registerIcon(texturePath);
@@ -71,12 +69,13 @@ public class JCedWoolBlock extends Block {
 	/**
 	 * クリエイティブタブに表示
 	 *
-	 * @param int ブロックID
+	 * @param Item
+	 *            アイテム
 	 * @param タブ
 	 * @param 追加するリスト
 	 */
 	@Override
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List) {
 		for (int var4 = 0; var4 < colorListLength; ++var4) {
 			par3List.add(new ItemStack(par1, 1, var4));
 		}
